@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const invoiceModel = require('./api/models');
+const cors = require('cors');
 
 app.use(express.json())
 
 // app.use('/', (req,res) => {
 //     res.send('Hello world');
 // })
+
+app.use(cors())
 
 app.get('/invoices', async (req,res) => {
     try {
