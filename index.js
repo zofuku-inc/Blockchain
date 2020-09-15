@@ -3,7 +3,8 @@ const app = express();
 const invoiceModel = require('./api/models');
 const formData = require('express-form-data')
 const cors = require('cors');
-const cloudinary = require('cloudinary')
+const cloudinary = require('cloudinary');
+const SHA256 = require('crypto-js/sha256');
 
 require('dotenv').config();
 
@@ -31,6 +32,7 @@ app.get('/invoices', async (req,res) => {
 
 app.post('/invoices', async (req,res) => {
     const invoice = req.body
+    invoice.hash = SHA256(JSON.stringify(invoice))
     try {
         const id = await invoiceModel.addInvoice(invoice)
         res.status(200).json(id)
