@@ -1,13 +1,20 @@
 const express = require('express');
 const app = express();
 const invoiceModel = require('./api/models');
+const formData = require('express-form-data')
 const cors = require('cors');
+const cloudinary = require('cloudinary')
+
+require('dotenv').config();
 
 app.use(express.json())
+app.use(formData.parse())
 
-// app.use('/', (req,res) => {
-//     res.send('Hello world');
-// })
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+})
 
 app.use(cors())
 
@@ -32,6 +39,19 @@ app.post('/invoices', async (req,res) => {
         res.status(500).json(err.message)
     }
     
+})
+
+app.post('/images', (req, res) => {
+    const values = Object.values(req.files)
+    const promises = values.map(image => cloudinary.uploader.upload(image.path))
+    Promise
+        .all(promises)
+        .then(results => {
+            res.status(200).json(results[0].url)
+        })
+        .catch(err => {
+            res.status(500).json(err.message)
+        })
 })
 
 
