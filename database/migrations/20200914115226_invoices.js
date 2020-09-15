@@ -4,6 +4,8 @@ exports.up = function(knex) {
       tbl.increments()
       tbl.string('place_number')
       tbl.float('original_price')
+      tbl.float('usage')
+      tbl.date('bill_date')
       tbl.date('expire_zofuku_pay')
       tbl.date('expire_neukind_pay')
   })
