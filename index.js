@@ -30,6 +30,17 @@ app.get('/invoices', async (req,res) => {
     
 })
 
+app.delete('/invoices/:invoiceId', async (req,res) => {
+    const {invoiceId} = req.params
+    try {
+        await invoiceModel.removeInvoice(invoiceId)
+        res.status(200).json({message: 'Deleted 1 invoice'})
+    }
+    catch(err) {
+        res.status(500).json(err.message)
+    }
+})
+
 app.post('/invoices', async (req,res) => {
     const invoice = req.body
     invoice.hash = SHA256(JSON.stringify(invoice)).toString()
