@@ -4,6 +4,12 @@ const getInvoices = () => {
     return db('invoices')
 }
 
+const getInvoiceById = (id) => {
+    return db('invoices')
+            .where({id: id})
+            .first()
+}
+
 const addInvoice = (invoice) => {
     return db('invoices')
             .returning('id')
@@ -19,6 +25,7 @@ const removeInvoice = (invoiceId) => {
 
 module.exports = {
     getInvoices,
+    getInvoiceById,
     addInvoice,
     removeInvoice
 }
