@@ -48,6 +48,18 @@ router.delete('/:invoiceId', async (req,res) => {
     }
 })
 
+router.patch('/:invoiceId', async (req,res) => {
+    const {invoiceId} = req.params
+    const change = req.body
+    try {
+        await invoiceModel.updateInvoice(invoiceId, change)
+        res.status(200).json({message: 'Updated 1 invoice'})
+    }
+    catch(err) {
+        res.status(500).json(err.message)
+    }
+})
+
 
 
 module.exports = router;

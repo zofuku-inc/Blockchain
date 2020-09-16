@@ -17,6 +17,12 @@ const addInvoice = (invoice) => {
             .then(ids => ({id: ids[0]}))
 }
 
+const updateInvoice = (id, change) => {
+    return db('invoices')
+            .where({id: id})
+            .update(change)
+}
+
 const removeInvoice = (invoiceId) => {
     return db('invoices')
             .where({id: invoiceId})
@@ -25,6 +31,7 @@ const removeInvoice = (invoiceId) => {
 
 module.exports = {
     getInvoices,
+    updateInvoice,
     getInvoiceById,
     addInvoice,
     removeInvoice
