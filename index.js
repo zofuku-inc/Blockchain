@@ -11,10 +11,12 @@ app.use(cors())
 const imageRoute = require('./api/routes/image');
 const invoiceRoute = require('./api/routes/invoices');
 const sendInvoiceRoute = require('./api/routes/sendInvoice');
+const stripeCheckOutRoute = require('./api/routes/payment')
 
 app.use('/images', imageRoute);
 app.use('/invoices', invoiceRoute);
 app.use('/sendInvoice', sendInvoiceRoute);
+app.use('/checkout', stripeCheckOutRoute);
 
 
 const PORT = process.env.PORT || 5009
