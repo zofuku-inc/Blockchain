@@ -1,7 +1,7 @@
 const router = require('express').Router();
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-const uuid = require('uuid/v4');
+const uuid = require('uuid');
 
 router.post('/', async (req, res) => {
     console.log('request:', req.body)
@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
         const charge = await stripe.charges.create({
             amount: invoice.price * 100,
             currency: "JPY",
+            customer: customer.id,
             receipt_email: token.email,
             description: `Paid the invoice ${invoice.id}`,
             shipping: {
