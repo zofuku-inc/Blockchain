@@ -6,7 +6,9 @@ require('dotenv').config();
 
 app.use(express.json())
 app.use(formData.parse())
-app.use(cors())
+app.use(cors({
+    origin: 'https://store.spaceincome.jp'
+}))
 
 const imageRoute = require('./api/routes/image');
 const invoiceRoute = require('./api/routes/invoices');
