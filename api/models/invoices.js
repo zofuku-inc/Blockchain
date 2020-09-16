@@ -1,4 +1,4 @@
-const db = require('../database/dbConfig');
+const db = require('../../database/dbConfig');
 
 const getInvoices = () => {
     return db('invoices')
