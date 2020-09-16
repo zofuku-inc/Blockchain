@@ -10,6 +10,7 @@ exports.up = function(knex) {
       tbl.date('expire_neukind_pay')
       tbl.string('bill_image')
       tbl.string('hash').unique().notNullable()
+      tbl.boolean('paid')
   })
 };
 
