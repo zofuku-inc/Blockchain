@@ -10,11 +10,11 @@ const sendInvoiceRoute = require('./api/routes/sendInvoice');
 const stripeCheckOutRoute = require('./api/routes/payment')
 
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://store.spaceincome.jp');
-    next();
-  });
-app.set('trust proxy', 1)
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'https://store.spaceincome.jp');
+//     next();
+//   });
+// app.set('trust proxy', 1)
 app.use(express.json())
 app.use(formData.parse())
 app.use(cors({
