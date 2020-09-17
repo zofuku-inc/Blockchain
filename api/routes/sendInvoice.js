@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
 
+router.post('/test', (req, res) => {
+    res.status(200).json({message: 'worked!'})
+})
+
 router.post('/:invoiceId', (req,res) => {
     const invoiceId = req.params.invoiceId
     const hash = req.body.hash
