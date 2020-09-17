@@ -11,7 +11,15 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(formData.parse())
 app.use(cors({
-    origin: 'https://store.spaceincome.jp'
+    origin: 'https://store.spaceincome.jp',
+    allowedHeaders: [
+        "Content-Type",
+        "Authorization",
+        "Access-Control-Allow-Methods",
+        "Access-Control-Request-Headers"
+      ],
+    credentials: true,
+    enablePreflight: true
 }))
 
 
