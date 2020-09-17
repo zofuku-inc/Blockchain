@@ -12,15 +12,17 @@ const stripeCheckOutRoute = require('./api/routes/payment')
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
   });
-// app.set('trust proxy', 1)
-app.use(cors(
-    {
-    origin: 'https://store.spaceincome.jp',
-    credentials: true
-    }
-)) 
+
+// app.use(cors(
+//     {
+//     origin: 'https://store.spaceincome.jp',
+//     credentials: true
+//     }
+// )) 
+
 app.use(express.json())
 app.use(formData.parse())
 
