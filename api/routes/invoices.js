@@ -17,8 +17,8 @@ router.post('/', async (req,res) => {
     const invoice = req.body
     invoice.hash = SHA256(JSON.stringify(invoice)).toString()
     try {
-        const id = await invoiceModel.addInvoice(invoice)
-        res.status(200).json(id, {hash: invoice.hash})
+        const response = await invoiceModel.addInvoice(invoice)
+        res.status(200).json({id: response.id, hash: invoice.hash})
     }
     catch(err) {
         res.status(500).json(err.message)
