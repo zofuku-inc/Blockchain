@@ -21,8 +21,8 @@ router.post('/:invoiceId', (req,res) => {
         }
     })
     const mailOptions = {
-        from: 'htran2@babson.edu',
-        to: 'jessiehong@zofuku.com',
+        from: 'jessiehong@zofuku.com',
+        to: 'htran2@babson.edu',
         subject: `Zofuku Bill | Invoice #${invoiceId}`,
         text: 
             'You are requested to pay an invoice for Zofuku.\n'
