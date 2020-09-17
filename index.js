@@ -15,14 +15,15 @@ const stripeCheckOutRoute = require('./api/routes/payment')
 //     next();
 //   });
 // app.set('trust proxy', 1)
+app.use(cors(
+    {
+    origin: 'https://store.spaceincome.jp',
+    credentials: true
+    }
+)) 
 app.use(express.json())
 app.use(formData.parse())
-app.use(cors(
-    // {
-    // origin: 'https://store.spaceincome.jp',
-    // credentials: true
-    // }
-))
+
 app.use('/images', imageRoute);
 app.use('/invoices', invoiceRoute);
 app.use('/sendInvoice', sendInvoiceRoute);
