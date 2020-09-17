@@ -7,6 +7,7 @@ require('dotenv').config();
 app.use(express.json())
 app.use(formData.parse())
 app.use(cors({
+    credentials: true,
     origin: 'https://store.spaceincome.jp'
 }))
 
