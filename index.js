@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'https://store.spaceincome.jp');
     next();
   });
 app.use(express.json())
@@ -21,12 +21,13 @@ app.use(cors({
     credentials: true,
     enablePreflight: true
 }))
-
+app.set('trust proxy', 1)
 
 const imageRoute = require('./api/routes/image');
 const invoiceRoute = require('./api/routes/invoices');
 const sendInvoiceRoute = require('./api/routes/sendInvoice');
 const stripeCheckOutRoute = require('./api/routes/payment')
+
 
 app.use('/images', imageRoute);
 app.use('/invoices', invoiceRoute);
