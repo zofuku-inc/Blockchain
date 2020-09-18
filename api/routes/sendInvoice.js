@@ -16,8 +16,12 @@ router.post('/:invoiceId', (req,res) => {
         // secure: false,
         // requireTLS: true,
         auth: {
+            type: 'OAuth2',
             user: `${process.env.EMAIL_ADDRESS}`,
-            pass: `${process.env.EMAIL_PASSWORD}`
+            pass: `${process.env.EMAIL_PASSWORD}`,
+            clientId: `${process.env.OAUTH2_CLIENT_ID}`,
+            clientSecret: `${process.env.OAUTH2_CLIENT_SECRET}`,
+            refreshToken: `${process.env.REFRESH_TOKEN}`
         }
     })
     const mailOptions = {
