@@ -20,7 +20,7 @@ const stripeCheckOutRoute = require('./api/routes/payment')
 
 app.use(cors(
     {
-    origin: '*',
+    origin: ['https://store.spaceincome.jp', 'https://developers.google.com/oauthplayground','https://developers.google.com/oauthplayground/'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
