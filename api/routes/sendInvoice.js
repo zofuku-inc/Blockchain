@@ -14,7 +14,6 @@ router.post('/:invoiceId', (req,res) => {
         host: 'smtp.gmail.com',
         port: 587,
         secure: false,
-        requireTLS: true,
         auth: {
             type: 'OAuth2',
             user: `${process.env.EMAIL_ADDRESS}`,
@@ -22,6 +21,9 @@ router.post('/:invoiceId', (req,res) => {
             clientId: `${process.env.OAUTH2_CLIENT_ID}`,
             clientSecret: `${process.env.OAUTH2_CLIENT_SECRET}`,
             refreshToken: `${process.env.REFRESH_TOKEN}`
+        },
+        tls: {
+            rejectUnauthorized: false
         }
     })
     const mailOptions = {
