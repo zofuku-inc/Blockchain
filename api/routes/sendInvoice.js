@@ -5,6 +5,22 @@ router.post('/test', (req, res) => {
     res.status(200).json({message: 'worked!'})
 })
 
+let transport = {
+    host: "smtp.gmail.com",
+    auth: {
+      user: process.env.EMAIL_ADDRESS,
+      pass: process.env.EMAIL_PASSWORD
+    }
+  };
+  var transporter = nodemailer.createTransport(transport);
+  transporter.verify((error, success) => {
+      if (error) {
+          console.log(error);
+      } else {
+          console.log('Server is ready to take messages');
+      }
+  });
+
 router.post('/:invoiceId', (req,res) => {
     const invoiceId = req.params.invoiceId
     const hash = req.body.hash

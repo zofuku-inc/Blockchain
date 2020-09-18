@@ -10,22 +10,22 @@ const sendInvoiceRoute = require('./api/routes/sendInvoice');
 const stripeCheckOutRoute = require('./api/routes/payment')
 
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//     res.header('Access-Control-Allow-Credentials', true);
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-//     next();
-//   });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+    next();
+  });
 
-app.use(cors(
-    {
-    origin: ['https://store.spaceincome.jp', 'https://developers.google.com/oauthplayground','https://developers.google.com/oauthplayground/'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
-    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-    }
-)) 
+// app.use(cors(
+//     {
+//     origin: ['https://store.spaceincome.jp', 'https://developers.google.com/oauthplayground','https://developers.google.com/oauthplayground/'],
+//     allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
+//     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+//     }
+// )) 
 
 app.use(express.json())
 app.use(formData.parse())
